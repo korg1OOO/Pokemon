@@ -56,7 +56,7 @@ programa {
     }
   }
   funcao gamePart1(){
-    cadeia continuar
+    cadeia continuar,nome
     escreva("\n\n")
     escreva("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
     escreva("&&&&&&&&&&&&&&&&&&&&&&&#(#&&@&#(&&&&&&&&&&&&&&&&&\n")
@@ -170,6 +170,6 @@ programa {
     escreva("É isso que eu faço.")
     leia(continuar)
     escreva("E você, quem é?")
-    leia(continuar)
+    leia(nome)
   }
 }
