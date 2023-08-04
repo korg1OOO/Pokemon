@@ -195,7 +195,12 @@ programa {
       escreva("\n")
     leia(nome)
       escreva("\n")
-  
+
+  se(nome == "" ou nome == " "){
+        escreva("E você, quem é?\n")
+        leia(nome)
+    }
+
   escreva("Você é menino ou menina?\n")
     
   escreva("\n")
