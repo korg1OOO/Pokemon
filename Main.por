@@ -78,7 +78,8 @@ programa {
 
 
   funcao gamePart1(){
-    cadeia continuar, nome, sexo, nomePokemon, escolher
+    cadeia continuar, nome, nomePokemon, escolher
+    cadeia sexo = " "
     escreva("\n\n")
     escreva("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
     escreva("&&&&&&&&&&&&&&&&&&&&&&&#(#&&@&#(&&&&&&&&&&&&&&&&&\n")
@@ -197,38 +198,35 @@ programa {
       escreva("\n")
 
   enquanto(nome == "" ou nome == " "){
-        escreva("E você, quem é?\n")
+        escreva("E você, quem é?\n\n")
         leia(nome)
+        escreva("\n")
     }
 
-  escreva("Você é menino ou menina?\n")
-    
-  escreva("\n")
-      
-  leia(sexo)
-    
-  se(sexo == "menino" ou sexo == "Menino")
-    {
+  enquanto(sexo != "menino" ou sexo != "menina" ou sexo != "Menina" ou sexo != "Menino"){
+      escreva("Você é menino ou menina?\n\n")
+      leia(sexo)
+      escreva(sexo)
+      se (sexo == "menino" ou sexo == "Menino" ou sexo == "menina" ou sexo == "Menina"){
 
-  escreva("\nPrazer em conhecê-lo, ", nome)
+      }
+  }
+  funcao gamePart2(){
+	  se(sexo == "menino" ou sexo == "Menino"){
+        escreva("\nPrazer em conhecê-lo, ", nome)
 
-  escreva("\n")
+        escreva("\n")
 
- 	u.aguarde(2000)
-     
-    }
+ 	      u.aguarde(2000)
+      }
+      senao se(sexo == "menina" ou sexo == "Menina"){
 
-  se(sexo == "menina" ou sexo == "Menina")
-    {
+      escreva("\n")
 
-  escreva("\n")
+      escreva("\nPrazer em conhecê-la, ", nome)
 
-  escreva("\nPrazer em conhecê-la, ", nome)
-
-	u.aguarde(1337)
-
+	    u.aguarde(1337)
 	}
-	
  	leia(continuar)
 
 	limpa()
@@ -399,7 +397,7 @@ programa {
 	u.aguarde(4000)
 
 	limpa()
-
+}
 	 	
   }//fim funcao gamePart1
 	
