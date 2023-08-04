@@ -196,7 +196,7 @@ programa {
     leia(nome)
       escreva("\n")
 
-  se(nome == "" ou nome == " "){
+  enquanto(nome == "" ou nome == " "){
         escreva("E você, quem é?\n")
         leia(nome)
     }
