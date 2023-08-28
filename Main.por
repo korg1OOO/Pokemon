@@ -1519,33 +1519,39 @@ programa {
 	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 1 e sorthpT <= 7){
 	       	escreva("\n", pokemon1, "não levou tanta sorte e curou apenas ", sorthpT, " de sua vida")
-	       	hpT = hpT + sorthpT
-	       	se(hpT > 40){
+          se(hpT > 40){
 	       		hpT = hpT - 40
 	       		hpT = hpT + 40 - hpT    	
 	       	}
+	       	senao {
+            hpT = hpT + sorthpT
+          }
 	       	escreva("Após se curar, ", pokemon1, " ficou com ", hpT, " de vida")
 	     }
 	     se(hpT < 40){
 	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 8 e sorthpT <= 14){
 	       	escreva("\n", pokemon1, " teve uma sorte considerável e recuperoou", sorthpT, " de sua vida")
-	       	hpT = hpT + sorthpT
 	       	se(hpT > 40){
 	       		hpT = hpT - 40
 	       		hpT = hpT + 40 - hpT    	
 	       	}
+          senao {
+            hpT = hpT + sorthpT
+          }
 	       	escreva("Após se curar, ", pokemon1, " ficou com ", hpT, " de vida")
 	            }
 	            se(hpT < 40){
 	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 8 e sorthpT <= 14){
 	       	escreva("", pokemon1, "teve uma sorte considerável e recuperoou", sorthpT, " de sua vida")
-	       	hpT = hpT + sorthpT
 	       	se(hpT > 40){
 	       		hpT = hpT - 40
 	       		hpT = hpT + 40 - hpT    	
 	       	}
+          senao {
+            hpT = hpT + sorthpT
+          }
 	       	escreva("Após se curar, ", pokemon1, " ficou com ", hpT, " de vida")
 	           }
               }
