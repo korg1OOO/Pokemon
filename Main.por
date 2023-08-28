@@ -1383,30 +1383,47 @@ programa {
         leia(continuar)
      }
 
-     funcao batalha(pokemon1, pokemon2){
+     funcao batalha(){
+      se(inicial == "Treecko" ou "treecko"){
+        cadeia pokemon1 = "Treecko"
+        cadeia pokemon2 = "Mudkip"
+      }
+      senao se(inicial == "Mudkip" ou "mudkip"){
+        cadeia pokemon1 = "Mudkip"
+        cadeia pokemon2 = "Torchic"
+      }
+      senao se(inicial == "Torchic" ou "torchic"){
+        cadeia pokemon1 = "Torchic"
+        cadeia pokemon2 = "Treecko"
+      }
+
       inteiro hpT = 40, hpM = 50
       inteiro atkT = 20, atkM = 25
       inteiro defT = 10, defM = 15
       inteiro speedT = 70, speedM = 58
       inteiro mov
+      cadeia continuar
 	 
-      escreva("Você vai lutar contra ", pokemon2, ", note que pokémon tipo grama são eficazes contra tipo água.")
       escreva("\n\nVocê escolheu o ", pokemon1)
+      leia(continuar)
+      limpa()
       escreva("\n\nTREECKO\n\nSTATUS\nHP: ", hpT ,"\nATK: ", atkT ,"\nDEF: ", defT , "\nSPEED: ", speedT)
-
       escreva("\n\nSeu adversário é o ", pokemon2, "\n\n", pokemon2, "\n\nSTATUS\nHP: ", hpM ,"\nATK: ", atkM ,"\nDEF: ", defM , "\nSPEED: ", speedM)
-
-
-      escreva("\n\n\n", pokemon1, "VS", pokemon2)
+      u.aguarde(75)
+      escreva("\n\n\n", pokemon1, " VS ", pokemon2)
+      leia(continuar)
+      limpa()
 
      
 
             
             escreva("\n\nA BATALHA VAI COMEÇAR, SE PREPAREEE")
+            u.aguarde(1000)
             escreva("\n\nE COMEÇA O DUELO")
+            u.aguarde(500)
             
             escreva("\n\nO primeiro turno é seu\nVocê possui ", hpT, " pontos de vida")
-
+            leia(continuar)
             escreva("\n\nQual será seu primeiro movimento\n1 - ATACAR\n2 - CURAR\n\n")
             leia(mov)
 
@@ -1435,7 +1452,7 @@ programa {
             }
 
 	}
-	funcao ataqueT(inteiro mov, inteiro &hpM, inteiro atkT, cadeia pokemon1, cadeia pokemon2, nomePokemon){
+	funcao ataqueT(inteiro mov, inteiro &hpM, inteiro atkT, cadeia pokemon1, cadeia pokemon2){
 	  inteiro sortM
             	inteiro sortatkT = Util.sorteia(0, 20)
             	se(sortatkT == 0){
@@ -1557,27 +1574,21 @@ programa {
       apresentacao()
       escreva("Você vai lutar contra Mudkip, note que pokémon tipo grama são eficazes contra tipo água.")
       leia(continuar)
-      cadeia pokemon1 = "Treecko"
-      cadeia pokemon2 = "Mudkip"
-      batalha(pokemon1, pokemon2)
+      batalha()
      }
      funcao aventuraTorchic(){
       cadeia continuar
       apresentacao()
       escreva("Você vai lutar contra Treecko, note que pokémon tipo fogo são eficazes contra tipo grama.")
       leia(continuar)
-      cadeia pokemon1 = "Torchic"
-      cadeia pokemon2 = "Treecko"
-      batalha(pokemon1, pokemon2)
+      batalha()
      }
      funcao aventuraMudkip(){
       cadeia continuar
       apresentacao()
       escreva("Você vai lutar contra Torchic, note que pokémon tipo água são eficazes contra tipo fogo.")
       leia(continuar)
-      cadeia pokemon1 = "Mudkip"
-      cadeia pokemon2 = "Torchic"
-      batalha(pokemon1, pokemon2)
+      batalha()
      }
      funcao gamePart2(){
       se(inicial == "Treecko" ou inicial == "treecko"){
