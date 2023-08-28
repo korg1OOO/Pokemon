@@ -8,6 +8,7 @@ programa {
 		gamePart1()
 		pokedex()
     gamePart2()
+    creditos()
 	}
 	
 	funcao start()
@@ -1407,7 +1408,7 @@ programa {
       escreva("\n\nVocê escolheu o ", pokemon1)
       leia(continuar)
       limpa()
-      escreva("\n\nTREECKO\n\nSTATUS\nHP: ", hpT ,"\nATK: ", atkT ,"\nDEF: ", defT , "\nSPEED: ", speedT)
+      escreva("\n\n", pokemon1, "\n\nSTATUS\nHP: ", hpT ,"\nATK: ", atkT ,"\nDEF: ", defT , "\nSPEED: ", speedT)
       escreva("\n\nSeu adversário é o ", pokemon2, "\n\n", pokemon2, "\n\nSTATUS\nHP: ", hpM ,"\nATK: ", atkM ,"\nDEF: ", defM , "\nSPEED: ", speedM)
       u.aguarde(75)
       escreva("\n\n\n", pokemon1, " VS ", pokemon2)
@@ -1445,18 +1446,38 @@ programa {
             se(mov == 1){
             	 ataqueT(mov, hpM, atkT, pokemon1, pokemon2)
             }
-            se(mov == 2){
+            senao se(mov == 2){
                  curarT(hpT, pokemon1)
               }
                  ataqueM(mov, hpT, atkM, pokemon1, pokemon2)
+            }
+            se(hpT > 0 e hpM <= 0 ){
+              escreva("\nParabéns, você venceu a batalha.")
+              leia(continuar)
+              escreva("Creio que você está pronto para se tornar um mestre pokémon.")
+              leia(continuar)
+              escreva("Boa sorte nas suas futuras aventuras pokémon!")
+              leia(continuar)
+              escreva("Obrigado por jogar!")
+              leia(continuar)
+            }
+            senao se(hpT <= 0 e hpM > 0){
+              escreva("\nInfelizmente você perdeu a batalha.")
+              leia(continuar)
+              escreva("Creio que você ainda não está pronto para se tornar um mestre pokémon.")
+              leia(continuar)
+              escreva("Treine mais seu inicial antes de batalhar novamente!")
+              leia(continuar)
+              escreva("Obrigado por jogar!")
+              leia(continuar)
             }
 
 	}
 	funcao ataqueT(inteiro mov, inteiro &hpM, inteiro atkT, cadeia pokemon1, cadeia pokemon2){
 	  inteiro sortM
-            	inteiro sortatkT = Util.sorteia(0, 20)
+            	inteiro sortatkT = u.sorteia(0, 20)
             	se(sortatkT == 0){
-            		escreva("\nO ataque de ", pokemon1, " não surtiu efeito algum e ", pokemon2, " ainda está com vida cheia")
+            		escreva("\nO ataque de ", pokemon1, " não surtiu efeito algum em ", pokemon2)
             	}
             	se(sortatkT >= 1 e sortatkT <= 6){
             		escreva("\n", pokemon1, " fez um movimento de ataque, não teve tanta sorte e o dano total foi ", sortatkT, " de ataque.")
@@ -1467,18 +1488,18 @@ programa {
               }
               se(sortatkT >= 7 e sortatkT <= 13){
             		escreva("\n", pokemon1, " fez um movimento de ataque e conseguiu dar um dano considerável de ", sortatkT, " de ataque.")
-            		 sortM = (Util.sorteia(6 , 10)/2)
+            		 sortM = (u.sorteia(6 , 10)/2)
             		  escreva("\n\n", pokemon2, " realizou um movimento de defesa anulando ", sortM/2, " pontos do ataque." ) 
                        hpM = hpM - sortatkT + (sortM/2)
                        se(hpM > 50){
                        	hpM = hpM - 50
                        	hpM = hpM + 50 - hpM                       	
                        }
-                       	escreva("\n", pokemon2, "está com ", hpM, " pontos de vida\n")
+                       	escreva("\n", pokemon2, " está com ", hpM, " pontos de vida\n")
               }
             	se(sortatkT >= 14  e sortatkT <= 20){
             		escreva("\n", pokemon1, " fez um movimento de ataque, levou muita sorte e deu um dano altíssimo de ", sortatkT, " de ataque.")	
-                     sortM = (Util.sorteia(11, 15)/2)
+                     sortM = (u.sorteia(11, 15)/2)
                       escreva("\n\n", pokemon2, " realizou um movimento de defesa anulando ", sortM/2 , " de ataque." ) 
                         hpM = hpM - sortatkT + (sortM/2)
                         se(hpM > 50){
@@ -1491,11 +1512,11 @@ programa {
 	funcao curarT(inteiro &hpT, cadeia pokemon1){
 		inteiro sorthpT
 	      escreva("\n\n", pokemon1, " tomou a decisão de curar o seu Pokémon\n", pokemon1, " poderá se curar em até 50% da sua vida máxima")
-		se(hpT == 40){
+		se(hpT > 40){
 			escreva("\n\n", pokemon1, " já está com a vida máxima. Você desperdiçou sua rodada") 
 		}
-	     se(hpT < 40){
-	       sorthpT = Util.sorteia(0, 7)
+	  senao se(hpT < 40){
+	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 1 e sorthpT <= 7){
 	       	escreva("\n", pokemon1, "não levou tanta sorte e curou apenas ", sorthpT, " de sua vida")
 	       	hpT = hpT + sorthpT
@@ -1506,7 +1527,7 @@ programa {
 	       	escreva("Após se curar, ", pokemon1, " ficou com ", hpT, " de vida")
 	     }
 	     se(hpT < 40){
-	       sorthpT = Util.sorteia(0, 7)
+	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 8 e sorthpT <= 14){
 	       	escreva("\n", pokemon1, " teve uma sorte considerável e recuperoou", sorthpT, " de sua vida")
 	       	hpT = hpT + sorthpT
@@ -1517,7 +1538,7 @@ programa {
 	       	escreva("Após se curar, ", pokemon1, " ficou com ", hpT, " de vida")
 	            }
 	            se(hpT < 40){
-	       sorthpT = Util.sorteia(0, 7)
+	       sorthpT = u.sorteia(0, 7)
 	       se(sorthpT >= 8 e sorthpT <= 14){
 	       	escreva("", pokemon1, "teve uma sorte considerável e recuperoou", sorthpT, " de sua vida")
 	       	hpT = hpT + sorthpT
@@ -1535,7 +1556,7 @@ programa {
 	funcao ataqueM(inteiro &hpT, inteiro atkM, inteiro defT, cadeia pokemon1, cadeia pokemon2){ 
 		     hpT = 40
 	 		inteiro sortT
-            	inteiro sortatkM = Util.sorteia(0, 25)
+            	inteiro sortatkM = u.sorteia(0, 25)
             	se(sortatkM == 0){
             		escreva("\nO ataque de ", pokemon2 ," não surtiu efeito algum e ", pokemon1, " ainda está com vida cheia")
             	}
@@ -1548,7 +1569,7 @@ programa {
               }
               se(sortatkM >= 9 e sortatkM <= 16){
             		escreva("\n", pokemon2, " fez um movimento de ataque e conseguiu dar um dano considerável de ", sortatkM , " de ataque.")
-            		 sortT = Util.sorteia(1 , 5)
+            		 sortT = u.sorteia(1 , 5)
             		  escreva("\n\n", pokemon1, " realizou um movimento de defesa anulando ", sortT, " pontos do ataque." ) 
                        hpT = hpT - sortatkM + sortT
                        se(hpT > 40){
@@ -1559,7 +1580,7 @@ programa {
               }
             	se(sortatkM >= 17  e sortatkM <= 25){
             		escreva("\n", pokemon2, " fez um movimento de ataque, levou muita sorte e deu um dano altíssimo de ", sortatkM, " de ataque.")	
-                     sortT = Util.sorteia(6, 10)
+                     sortT = u.sorteia(6, 10)
                       escreva("\n\n", pokemon1, " realizou um movimento de defesa anulando ", sortT , " de ataque." ) 
                         hpT = hpT - sortatkM + sortT
                         se(hpT > 40){
@@ -1568,6 +1589,189 @@ programa {
                        }
                        	escreva("\n", pokemon1, " está com ", hpT, " pontos de vida\n")
              	}
+     }
+     funcao creditos(){
+      cadeia continuar
+    escreva("J")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva("g")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva(" d")
+    u.aguarde(50)
+    escreva("e")
+    u.aguarde(50)
+    escreva("s")
+    u.aguarde(50)
+    escreva("e")
+    u.aguarde(50)
+    escreva("n")
+    u.aguarde(50)
+    escreva("v")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva("l")
+    u.aguarde(50)
+    escreva("v")
+    u.aguarde(50)
+    escreva("i")
+    u.aguarde(50)
+    escreva("d")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva(" p")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva(":")
+    u.aguarde(50)
+    escreva(" A")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva("t")
+    u.aguarde(50)
+    escreva("h")
+    u.aguarde(50)
+    escreva("u")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva(" R")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva("b")
+    u.aguarde(50)
+    escreva("e")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva("t")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva(" D")
+    u.aguarde(50)
+    escreva("a")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva("t")
+    u.aguarde(50)
+     escreva("o")
+    u.aguarde(50)
+    escreva("r")
+    u.aguarde(50)
+    escreva("a")
+    u.aguarde(50)
+    escreva(",")
+    u.aguarde(50)
+     escreva(" E")
+    u.aguarde(50)
+    escreva("n")
+    u.aguarde(50)
+    escreva("z")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+     escreva(" F")
+    u.aguarde(50)
+    escreva("e")
+    u.aguarde(50)
+    escreva("l")
+    u.aguarde(50)
+    escreva("d")
+    u.aguarde(50)
+     escreva("m")
+    u.aguarde(50)
+    escreva("a")
+    u.aguarde(50)
+    escreva("n")
+    u.aguarde(50)
+    escreva(",")
+    u.aguarde(50)
+     escreva(" L")
+    u.aguarde(50)
+    escreva("u")
+    u.aguarde(50)
+    escreva("c")
+    u.aguarde(50)
+    escreva("a")
+    u.aguarde(50)
+    escreva("s")
+    u.aguarde(50)
+     escreva(" A")
+    u.aguarde(50)
+    escreva("o")
+    u.aguarde(50)
+    escreva("k")
+    u.aguarde(50)
+    escreva("i")
+    u.aguarde(50)
+     escreva(" e")
+    u.aguarde(50)
+    escreva(" S")
+    u.aguarde(50)
+    escreva("a")
+    u.aguarde(50)
+    escreva("m")
+    u.aguarde(50)
+     escreva("u")
+    u.aguarde(50)
+    escreva("e")
+    u.aguarde(50)
+    escreva("l")
+    u.aguarde(50)
+    escreva(" Y")
+    u.aguarde(50)
+     escreva("o")
+    u.aguarde(50)
+    escreva("u")
+    u.aguarde(50)
+    escreva("n")
+    u.aguarde(50)
+    escreva("i")
+    u.aguarde(50)
+    escreva("s")
+
+    leia(continuar)
+    escreva("\n")
+    escreva("\n")
+    escreva("1")
+    u.aguarde(50)
+    escreva("°")
+    u.aguarde(50)
+    escreva(" T")
+    u.aguarde(50)
+    escreva(".")
+    u.aguarde(50)
+    escreva("D")
+    u.aguarde(50)
+    escreva(".")
+    u.aguarde(50)
+    escreva("S ")
+    leia(continuar)
+    escreva("\n")
+    u.aguarde(50)
+    escreva("\n")
+    escreva("2")
+    u.aguarde(50)
+    escreva("0")
+    u.aguarde(50)
+    escreva("2")
+    u.aguarde(50)
+    escreva("3")
+
+    escreva("\n")
+    leia(continuar)
      }
      funcao aventuraTreecko(){
       cadeia continuar
