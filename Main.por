@@ -594,6 +594,7 @@ programa {
     escreva("\nGostaria de ver a próxima evolução? Sim = 1 Não = 0\n")
     leia(a)
     se(a == 1){
+      limpa()
       escreva("\nGROVYLE\n")
       escreva("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#/,,,/#%@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
       escreva("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.*********************,/@@@&@@@@@@@@@@@@@\n")
@@ -644,6 +645,7 @@ programa {
     escreva("\nGostaria de ver o Sceptile? Sim = 1 Não = 0\n")
     leia(a)
     se( a == 1){
+      limpa()
       escreva("\nSCEPTILE")
       escreva("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
       escreva("\n@@@@@@@@@@@@@@@@@@@@@@@@@@(@@@@@@@@@@/##(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
@@ -758,6 +760,7 @@ programa {
 	    escreva("\nGostaria de ver o Combusken? Sim = 1 Não = 0\n")
 	    leia(a)
 	    se( a == 1){
+        limpa()
 	 escreva("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")  
       escreva("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@****,**@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ")    
       escreva("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,,,*#@@&*********%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")     
@@ -816,6 +819,7 @@ programa {
       escreva("\nGostaria de ver Blazilen? Sim = 1 Não = 0\n")
 	 leia(a)
 	 se(a == 1){
+    limpa()
 	     escreva("\n                                                                                                    ")
 		escreva("\n                                         .     (. .......#                                          ")
 		escreva("\n                                           *..................                                      ")
@@ -962,6 +966,7 @@ programa {
 	    escreva("\nGostaria de ver o Marshtomp? Sim = 1 Não = 0\n")
 	    leia(a)
 	    se(a == 1){
+        limpa()
 	      escreva("MARSHTOMP")
 	      escreva("\n                                                       .*#%%                                        ")
 	      escreva("\n                                                   %/(((/(%                                         ")
@@ -1019,6 +1024,7 @@ programa {
 	    escreva("\nGostaria de ver Swampert? Sim = 1 Não = 0\n")
 	    leia(a)
 	    se(a == 1){
+        limpa()
 		escreva("\n	    	                                                                                                                        ")
 		escreva("\n                            &/######@/.                                                                                 ")
 		escreva("\n                          /&###&########                 &///((#@#((/                                                   ")
@@ -1420,6 +1426,11 @@ programa {
             
             escreva("\n\nA BATALHA VAI COMEÇAR, SE PREPAREEE")
             u.aguarde(1000)
+            escreva("\n\nO PRIMEIRO AO CHEGAR A 0 DE VIDA PERDE")
+            u.aguarde(1000)
+            escreva("\n\nAO CAUSAR DANO VOCÊ PODE ROUBAR VIDA")
+            u.aguarde(1000)
+            escreva("\n\nBOA SORTE TREINADOR!")
             escreva("\n\nE COMEÇA O DUELO")
             u.aguarde(500)
             
@@ -1452,6 +1463,7 @@ programa {
                  ataqueM(mov, hpT, atkM, pokemon1, pokemon2)
             }
             se(hpT > 0 e hpM <= 0 ){
+              limpa()
               escreva("\nParabéns, você venceu a batalha.")
               leia(continuar)
               escreva("Creio que você está pronto para se tornar um mestre pokémon.")
@@ -1462,6 +1474,7 @@ programa {
               leia(continuar)
             }
             senao se(hpT <= 0 e hpM > 0){
+              limpa()
               escreva("\nInfelizmente você perdeu a batalha.")
               leia(continuar)
               escreva("Creio que você ainda não está pronto para se tornar um mestre pokémon.")
@@ -1598,6 +1611,7 @@ programa {
      }
      funcao creditos(){
       cadeia continuar
+      limpa()
     escreva("J")
     u.aguarde(50)
     escreva("o")
